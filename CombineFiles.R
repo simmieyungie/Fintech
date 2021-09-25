@@ -22,3 +22,4 @@ test <- Appstore %>%
   unnest(json_parsed)
 
 #rm(test)
+fromJSON(gsub(",", "", paste0('[',toString(head(Appstore$developerResponse)),']')))
