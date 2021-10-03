@@ -1,0 +1,34 @@
+#read in dataset
+library(tidyverse)
+library(lubridate)
+#install.packages("texter")
+library(texter)
+#Combine google and apple datasets
+Appstore <- read.csv("Data/AppStoreReviews.csv")
+library(stringi)
+library(jsonlite)
+Appstore %>%
+mutate(
+json_parsed = map(developerResponse, ~ fromJSON(., flatten=TRUE))
+) %>%
+unnest(json_parsed)
+Appstore %>%
+mutate(developerResponse = toJSON(developerResponse))
+Appstore %>%
+mutate(developerResponse = toJSON(developerResponse)) %>%
+mutate(
+json_parsed = map(developerResponse, ~ fromJSON(., flatten=TRUE))
+) %>%
+unnest(json_parsed)
+test <- Appstore %>%
+mutate(developerResponse = toJSON(developerResponse)) %>%
+mutate(
+json_parsed = map(developerResponse, ~ fromJSON(., flatten=TRUE))
+) %>%
+unnest(json_parsed)
+rm(test)
+#rm(test)
+fromJSON(paste0('[',toString(head(Appstore$developerResponse)),']'))
+#rm(test)
+fromJSON(gsub(",", "", paste0('[',toString(head(Appstore$developerResponse)),']')))
+setwd("C:/Users/SIMIYOUNG/Desktop/Cohort Analysis")
