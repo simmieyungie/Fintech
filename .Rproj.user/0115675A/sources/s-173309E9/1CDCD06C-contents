@@ -7,6 +7,8 @@ library(texter)
 #data
 playstore <- read.csv("Data/PlayStoreReviews.csv")
 
+playstore %>%
+  mutate()
 #analysis
 # Average Rating
 playstore %>%
@@ -35,6 +37,7 @@ playstore %>%
 playstore %>%
   group_by(brand) %>%
   count()
+
 # Number of reviews responded to
 playstore %>%
   filter(content != "") %>%
