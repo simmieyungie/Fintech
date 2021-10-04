@@ -1,9 +1,9 @@
-"","ReviewSource","brand","replystatus","AverageRating"
-"1","AppStore","abeg","No Reply",1.9
-"2","AppStore","abeg","Reply",2.20588235294118
-"3","AppStore","flutterwave","No Reply",2.26666666666667
-"4","AppStore","flutterwave","Reply",3.46875
-"5","Playstore","abeg","No Reply",4.33549783549784
-"6","Playstore","abeg","Reply",2.03523693803159
-"7","Playstore","flutterwave","No Reply",4.16923076923077
-"8","Playstore","flutterwave","Reply",3.7084631982738
+"ReviewSource","brand","replystatus","AverageRating"
+"AppStore","abeg","No Reply",1.9
+"AppStore","abeg","Reply",2.20588235294118
+"AppStore","flutterwave","No Reply",2.26666666666667
+"AppStore","flutterwave","Reply",3.46875
+"Playstore","abeg","No Reply",4.33549783549784
+"Playstore","abeg","Reply",2.03523693803159
+"Playstore","flutterwave","No Reply",4.16923076923077
+"Playstore","flutterwave","Reply",3.7084631982738

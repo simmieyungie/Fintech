@@ -50,14 +50,14 @@ df <- rbind.data.frame(new_appstore, new_playstore)
 df %>%
   group_by(ReviewSource,brand) %>%
   summarise(average_rating = mean(score)) %>%
-  write.csv("AnalysisFiles/AverageRating.csv")
+  write.csv("AnalysisFiles/AverageRating.csv", row.names = F)
 
 
 # Rating count of 1 - 5
 df %>%
   group_by(ReviewSource, brand, score) %>%
   count() %>%
-  write.csv("AnalysisFiles/RatingCount.csv")
+  write.csv("AnalysisFiles/RatingCount.csv", row.names = F)
 
 
 # Review Trend
@@ -66,14 +66,14 @@ df %>%
   mutate(date = date(at)) %>%
   group_by(date, ReviewSource, brand) %>%
   count() %>%
-  write.csv("AnalysisFiles/ReviewTrend.csv")
+  write.csv("AnalysisFiles/ReviewTrend.csv", row.names = F)
 
 
 ## Number of reviews collected
 df %>%
   group_by(ReviewSource,brand) %>%
   count()%>%
-  write.csv("AnalysisFiles/TotalReviews.csv")
+  write.csv("AnalysisFiles/TotalReviews.csv", row.names = F)
 
 #Number of reviews responded to
 df %>%
@@ -83,7 +83,7 @@ df %>%
   group_by(ReviewSource, brand, replystatus) %>%
   count() %>%
   ungroup() %>%
-  write.csv("AnalysisFiles/CountReviewsRespondedTo.csv")
+  write.csv("AnalysisFiles/CountReviewsRespondedTo.csv", row.names = F)
 
 # Difference between review time and response time
 df %>%
@@ -94,7 +94,7 @@ df %>%
   filter(responseTime >= 0) %>%  #filter negative response time as some are re-response in a convo so created time is ahead of response
   group_by(ReviewSource,brand) %>%
   summarise(AvgResponse = mean(responseTime))%>%
-  write.csv("AnalysisFiles/AverageReviewResponseTime.csv")
+  write.csv("AnalysisFiles/AverageReviewResponseTime.csv", row.names = F)
 
 # Average rating of responded reviews versus not responded to
 df %>%
@@ -103,7 +103,7 @@ df %>%
            if_else(content != "" & replyContent == "", "No Reply", "Reply")) %>%
   group_by(ReviewSource,brand, replystatus) %>%
   summarise(AverageRating = mean(score))%>%
-  write.csv("AnalysisFiles/AverageReviewReplyRating.csv")
+  write.csv("AnalysisFiles/AverageReviewReplyRating.csv", row.names = F)
 
 # Overall Reaction for Apple
 unique(df$ReviewSource)
@@ -132,7 +132,7 @@ plyr::rbind.fill(lapply(x, function(source){
   })) %>%
     mutate(ReviewSource = source) #add source name
 })) %>%
-  write.csv("AnalysisFiles/OverallReactions.csv")
+  write.csv("AnalysisFiles/OverallReactions.csv", row.names = F)
 
 #Get top words
 plyr::rbind.fill(lapply(x, function(source){
@@ -148,7 +148,7 @@ plyr::rbind.fill(lapply(x, function(source){
   })) %>%
     mutate(ReviewSource = source) #add source name
 })) %>%
-  write.csv("AnalysisFiles/TopWords.csv")
+  write.csv("AnalysisFiles/TopWords.csv", row.names = F)
 
 
 #Bing Trend
@@ -165,7 +165,7 @@ plyr::rbind.fill(lapply(x, function(source){
   })) %>%
     mutate(ReviewSource = source) #add source name
 })) %>%
-  write.csv("AnalysisFiles/TopSentiments.csv")
+  write.csv("AnalysisFiles/TopSentiments.csv", row.names = F)
 
 
 #Bigrams
@@ -182,7 +182,7 @@ plyr::rbind.fill(lapply(x, function(source){
   })) %>%
     mutate(ReviewSource = source) #add source name
 })) %>%
-  write.csv("AnalysisFiles/Bigrams.csv")
+  write.csv("AnalysisFiles/Bigrams.csv", row.names = F)
 
 
 #Twiter and Instagram Analysis
